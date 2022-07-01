@@ -18,7 +18,7 @@ jobs:
       # Publish
       - name: publish on version change
         id: publish_nuget
-        uses: brandedoutcast/publish-nuget@v2
+        uses: Rebel028/publish-nuget@v2.7.0
         with:
           # Filepath of the project to be packaged, relative to root of repository
           PROJECT_FILE_PATH: src/Downcast.Common.Logging/Downcast.Common.Logging.csproj
@@ -46,7 +46,10 @@ jobs:
 
           # Format of the git tag, [*] gets replaced with actual version
           # TAG_FORMAT: v*
-
+          
+          # Required for packages pushed to Github Package Registry. User allowed to push to repository, defaults to GITHUB_ACTOR (user that triggered the action)
+          # GITHUB_USER: # optional
+          
           # API key to authenticate with NuGet server
           NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
 
