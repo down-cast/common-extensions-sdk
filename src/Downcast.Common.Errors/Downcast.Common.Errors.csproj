@@ -6,17 +6,7 @@
         <Nullable>enable</Nullable>
         <RepositoryUrl>https://github.com/down-cast/common-extensions-sdk</RepositoryUrl>
         <IsPackable>true</IsPackable>
-        <Version>0.0.5</Version>
+        <Version>0.0.6</Version>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-      <PackageReference Include="Serilog" Version="2.11.0" />
-    </ItemGroup>
-
-   
-
+    
 </Project>
