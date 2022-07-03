@@ -35,10 +35,10 @@ jobs:
           # VERSION_STATIC: 1.0.0
 
           # Flag to toggle git tagging, enabled by default
-          # TAG_COMMIT: true
+          TAG_COMMIT: true
 
           # Format of the git tag, [*] gets replaced with actual version
-          # TAG_FORMAT: v*
+          TAG_FORMAT: v*-Downcast.Common.Logging
           
           # Required for packages pushed to Github Package Registry. User allowed to push to repository, defaults to GITHUB_ACTOR (user that triggered the action)
           # GITHUB_USER: # optional
@@ -61,6 +61,8 @@ jobs:
           VERSION_FILE_PATH: src/Downcast.Common.HttpClient.Extensions/Directory.Build.props
           NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
           NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
+          TAG_COMMIT: true
+          TAG_FORMAT: v*-Downcast.Common.HttpClient.Extensions
 
       - name: Publish Downcast.Common.Errors
         id: publish_http_errors_nuget
@@ -70,7 +72,9 @@ jobs:
           PACKAGE_NAME: Downcast.Common.Errors
           VERSION_FILE_PATH: src/Downcast.Common.Errors/Directory.Build.props
           NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
-          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast          
+          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
+          TAG_COMMIT: true
+          TAG_FORMAT: v*-Downcast.Common.Errors
           
       - name: Publish Downcast.Common.Errors.Handler
         id: publish_http_errors_handler_nuget
@@ -80,4 +84,7 @@ jobs:
           PACKAGE_NAME: Downcast.Common.Errors.Handler
           VERSION_FILE_PATH: src/Downcast.Common.Errors.Handler/Directory.Build.props
           NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
-          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast                    
+          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
+          TAG_COMMIT: true
+          TAG_FORMAT: v*-Downcast.Common.Errors.Handler
+            
