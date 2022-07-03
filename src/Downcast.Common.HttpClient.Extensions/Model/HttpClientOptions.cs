@@ -9,8 +9,7 @@ public class HttpClientOptions
 
     [Required(ErrorMessage = $"Please provide a valid uri for {nameof(ConnectionString)})")]
     public Uri ConnectionString { get; set; } = null!;
-
-
+    
     public CircuitBreakerPolicyOptions? CircuitBreakerPolicyOptions { get; set; }
     public TimeoutPolicyOptions? TimeoutPolicyOptions { get; set; }
     public RetryPolicyOptions? RetryPolicyOptions { get; set; }
