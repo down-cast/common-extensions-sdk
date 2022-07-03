@@ -63,7 +63,7 @@ jobs:
           NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
 
       - name: Publish Downcast.Common.Errors
-        id: publish_http_client_nuget
+        id: publish_http_errors_nuget
         uses: Rebel028/publish-nuget@v2.7.0
         with:
           PROJECT_FILE_PATH: src/Downcast.Common.Errors/Downcast.Common.Errors.csproj
@@ -73,7 +73,7 @@ jobs:
           NUGET_SOURCE: https://nuget.pkg.github.com/down-cast          
           
       - name: Publish Downcast.Common.Errors.Handler
-        id: publish_http_client_nuget
+        id: publish_http_errors_handler_nuget
         uses: Rebel028/publish-nuget@v2.7.0
         with:
           PROJECT_FILE_PATH: src/Downcast.Common.Errors.Handler/Downcast.Common.Errors.Handler.csproj
