@@ -9,15 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      # - name: Setup dotnet
-      #   uses: actions/setup-dotnet@v1
-      #   with:
-      #     dotnet-version: 3.1.200
-
-      # Publish
-      - name: publish on version change
-        id: publish_nuget
+      - name: Publish Downcast.Common.Logging
+        id: publish_logging_nuget
         uses: Rebel028/publish-nuget@v2.7.0
         with:
           # Filepath of the project to be packaged, relative to root of repository
@@ -33,7 +26,7 @@ jobs:
           PACKAGE_NAME: Downcast.Common.Logging
           
           # Filepath with version info, relative to root of repository & defaults to PROJECT_FILE_PATH
-          VERSION_FILE_PATH: Directory.Build.props
+          VERSION_FILE_PATH: src/Downcast.Common.Logging/Directory.Build.props
 
           # Regex pattern to extract version info in a capturing group
           # VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
@@ -58,3 +51,13 @@ jobs:
 
           # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
           # INCLUDE_SYMBOLS: false
+          
+      - name: Downcast.HttpClient.Extensions
+        id: publish_nuget
+        uses: Rebel028/publish-nuget@v2.7.0
+        with:
+          PROJECT_FILE_PATH: src/Downcast.HttpClient.Extensions/Downcast.HttpClient.Extensions.csproj
+          PACKAGE_NAME: Downcast.HttpClient.Extensions
+          VERSION_FILE_PATH: src/Downcast.HttpClient.Extensions/Directory.Build.props
+          NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
+          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
