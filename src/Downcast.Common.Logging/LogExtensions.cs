@@ -10,7 +10,7 @@ namespace Downcast.Common.Logging;
 
 public static class LogExtensions
 {
-    public static void ConfigureSerilog(this WebApplicationBuilder builder)
+    public static void AddSerilog(this WebApplicationBuilder builder)
     {
         builder.Configuration.AddJsonFile("serilog-settings.json", false, false);
         builder.Logging.ClearProviders();

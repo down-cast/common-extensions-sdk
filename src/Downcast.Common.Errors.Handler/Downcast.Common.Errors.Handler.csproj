@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <RepositoryUrl>https://github.com/down-cast/common-extensions-sdk</RepositoryUrl>
         <IsPackable>true</IsPackable>
-        <Version>0.0.6</Version>
+        <Version>0.0.7</Version>
     </PropertyGroup> 
 
     <ItemGroup>
