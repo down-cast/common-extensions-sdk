@@ -6,9 +6,13 @@
         <Nullable>enable</Nullable>
         <RepositoryUrl>https://github.com/down-cast/common-extensions-sdk</RepositoryUrl>
         <IsPackable>true</IsPackable>
-    </PropertyGroup>
+    </PropertyGroup> 
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Downcast.Common.Errors" Version="0.0.3" />
     </ItemGroup>
 </Project>

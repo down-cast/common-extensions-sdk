@@ -82,7 +82,7 @@ public class CustomExceptionHandler
     }
 
 
-    private Task WriteResponse(HttpContext context, ErrorResponse response, HttpStatusCode statusCode)
+    private static Task WriteResponse(HttpContext context, ErrorResponse response, HttpStatusCode statusCode)
     {
         context.Response.StatusCode  = (int)statusCode;
         context.Response.ContentType = ContentType;
