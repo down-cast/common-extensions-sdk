@@ -2,15 +2,15 @@ namespace Downcast.Common.Errors;
 
 public class DcException : Exception
 {
-    public ErrorCodes ErrorCode { get; }
+    public string ErrorCode { get; }
 
     public DcException(ErrorCodes errorCode)
     {
-        ErrorCode = errorCode;
+        ErrorCode = errorCode.ToString();
     }
 
     public DcException(ErrorCodes errorCode, string message) : base(message)
     {
-        ErrorCode = errorCode;
+        ErrorCode = errorCode.ToString();
     }
 }

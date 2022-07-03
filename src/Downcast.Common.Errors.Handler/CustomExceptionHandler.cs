@@ -35,8 +35,7 @@ public class CustomExceptionHandler
         {
             _logger.LogWarning(
                 "Error options {ErrorSection} are empty, configure it so the exceptions do not return all {DefaultStatusCode}",
-                ErrorsOptions.SectionName,
-                DefaultStatusCode);
+                ErrorsOptions.SectionName, DefaultStatusCode);
         }
     }
 
@@ -59,18 +58,23 @@ public class CustomExceptionHandler
     private Task ProcessGenericException(HttpContext context, Exception ex)
     {
         _logger.LogError(ex, "Caught generic exception, returning {DefaultStatusCode}", DefaultStatusCode);
-        return WriteResponse(context, new ErrorResponse { Code = DefaultStatusCode.ToString() }, DefaultStatusCode);
+        return WriteResponse(context, new ErrorResponse
+        {
+            Code = DefaultStatusCode.ToString()
+        }, DefaultStatusCode);
     }
 
     private Task ProcessDcException(HttpContext context, DcException ex)
     {
         _logger.LogError("DcException thrown: {ErrorCode} {DevMessage}", ex.ErrorCode, ex.Message);
-        var response = new ErrorResponse { Code = ex.ErrorCode.ToString() };
-
-        if (!_options.Value.ErrorCodeDetails.TryGetValue(ex.ErrorCode.ToString(), out ErrorDetails? detail))
+        var response = new ErrorResponse
         {
-            _logger.LogWarning("{ErrorCode} not configured, returning {DefaultStatusCode}",
-                               ex.ErrorCode,
+            Code = ex.ErrorCode.ToString()
+        };
+
+        if (!_options.Value.ErrorCodeDetails.TryGetValue(ex.ErrorCode, out ErrorDetails? detail))
+        {
+            _logger.LogWarning("{ErrorCode} not configured, returning {DefaultStatusCode}", ex.ErrorCode,
                                DefaultStatusCode);
 
             return WriteResponse(context, response, DefaultStatusCode);

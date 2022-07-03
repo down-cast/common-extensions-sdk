@@ -10,9 +10,9 @@
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    </ItemGroup>
+    </ItemGroup> 
 
     <ItemGroup>
-      <PackageReference Include="Downcast.Common.Errors" Version="0.0.3" />
+      <ProjectReference Include="..\Downcast.Common.Errors\Downcast.Common.Errors.csproj" />
     </ItemGroup>
 </Project>
