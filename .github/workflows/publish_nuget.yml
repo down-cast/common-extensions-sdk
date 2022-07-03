@@ -52,12 +52,12 @@ jobs:
           # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
           # INCLUDE_SYMBOLS: false
           
-      - name: Downcast.HttpClient.Extensions
-        id: publish_nuget
+      - name: Downcast.Common.HttpClient.Extensions
+        id: publish_http_client_nuget
         uses: Rebel028/publish-nuget@v2.7.0
         with:
-          PROJECT_FILE_PATH: src/Downcast.HttpClient.Extensions/Downcast.HttpClient.Extensions.csproj
-          PACKAGE_NAME: Downcast.HttpClient.Extensions
-          VERSION_FILE_PATH: src/Downcast.HttpClient.Extensions/Directory.Build.props
+          PROJECT_FILE_PATH: src/Downcast.Common.HttpClient.Extensions/Downcast.Common.HttpClient.Extensions.csproj
+          PACKAGE_NAME: Downcast.Common.HttpClient.Extensions
+          VERSION_FILE_PATH: src/Downcast.Common.HttpClient.Extensions/Directory.Build.props
           NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
           NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
