@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0CD0D260-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downcast.Common.HttpClient.Extensions", "src\Downcast.Common.HttpClient.Extensions\Downcast.Common.HttpClient.Extensions.csproj", "{8427F886-5CD9-4417-99EE-FA78805A2567}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downcast.Common.Errors", "src\Downcast.Common.Error.Handler\Downcast.Common.Errors.csproj", "{9294CBDF-3859-499C-B5E9-5678D8C5777F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downcast.Common.Errors", "src\Downcast.Common.Errors\Downcast.Common.Errors.csproj", "{9294CBDF-3859-499C-B5E9-5678D8C5777F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downcast.Common.Errors.Handler", "src\Downcast.Common.Errors.Handler\Downcast.Common.Errors.Handler.csproj", "{CD91948F-D0C0-4685-9758-8C04363B2024}"
 EndProject
