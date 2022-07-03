@@ -61,3 +61,23 @@ jobs:
           VERSION_FILE_PATH: src/Downcast.Common.HttpClient.Extensions/Directory.Build.props
           NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
           NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
+
+      - name: Publish Downcast.Common.Errors
+        id: publish_http_client_nuget
+        uses: Rebel028/publish-nuget@v2.7.0
+        with:
+          PROJECT_FILE_PATH: src/Downcast.Common.Errors/Downcast.Common.Errors.csproj
+          PACKAGE_NAME: Downcast.Common.Errors
+          VERSION_FILE_PATH: src/Downcast.Common.Errors/Directory.Build.props
+          NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
+          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast          
+          
+      - name: Publish Downcast.Common.Errors.Handler
+        id: publish_http_client_nuget
+        uses: Rebel028/publish-nuget@v2.7.0
+        with:
+          PROJECT_FILE_PATH: src/Downcast.Common.Errors.Handler/Downcast.Common.Errors.Handler.csproj
+          PACKAGE_NAME: Downcast.Common.Errors.Handler
+          VERSION_FILE_PATH: src/Downcast.Common.Errors.Handler/Directory.Build.props
+          NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
+          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast                    
