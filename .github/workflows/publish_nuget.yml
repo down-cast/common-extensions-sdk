@@ -52,7 +52,7 @@ jobs:
           # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
           # INCLUDE_SYMBOLS: false
           
-      - name: Downcast.Common.HttpClient.Extensions
+      - name: Publish Downcast.Common.HttpClient.Extensions
         id: publish_http_client_nuget
         uses: Rebel028/publish-nuget@v2.7.0
         with:
