@@ -69,7 +69,7 @@ public class CustomExceptionHandler
         _logger.LogError("DcException thrown: {ErrorCode} {DevMessage}", ex.ErrorCode, ex.Message);
         var response = new ErrorResponse
         {
-            Code = ex.ErrorCode.ToString()
+            Code = ex.ErrorCode
         };
 
         if (!_options.Value.ErrorCodeDetails.TryGetValue(ex.ErrorCode, out ErrorDetails? detail))
