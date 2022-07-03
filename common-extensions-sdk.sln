@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution 
 		.gitignore = .gitignore
 		.editorconfig = .editorconfig
 		gitHubAction = .github\workflows\publish_nuget.yml
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7E1679AC-AF1F-4442-94AC-BBDC9F14CD07}"
