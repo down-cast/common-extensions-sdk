@@ -3,5 +3,6 @@ namespace Downcast.Common.Errors;
 public enum ErrorCodes
 {
     InvalidSessionToken,
-    ClaimNotFound
+    ClaimNotFound,
+    EntityNotFound
 }
