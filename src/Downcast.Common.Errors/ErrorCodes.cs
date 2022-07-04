@@ -5,5 +5,5 @@ public enum ErrorCodes
     InvalidSessionToken,
     ClaimNotFound,
     EntityNotFound,
-    BadRequest
+    BadRequest,
 }
