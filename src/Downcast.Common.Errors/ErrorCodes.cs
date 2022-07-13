@@ -6,4 +6,5 @@ public enum ErrorCodes
     ClaimNotFound,
     EntityNotFound,
     BadRequest,
+    InvalidSecurityCode
 }
