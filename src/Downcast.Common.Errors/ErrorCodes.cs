@@ -7,5 +7,6 @@ public enum ErrorCodes
     EntityNotFound,
     BadRequest,
     InvalidSecurityCode,
-    AuthenticationFailed
+    AuthenticationFailed,
+    EmailAlreadyTaken
 }
