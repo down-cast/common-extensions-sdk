@@ -8,5 +8,6 @@ public enum ErrorCodes
     BadRequest,
     InvalidSecurityCode,
     AuthenticationFailed,
-    EmailAlreadyTaken
+    EmailAlreadyTaken,
+    DatabaseError,
 }
