@@ -10,5 +10,6 @@ public enum ErrorCodes
     AuthenticationFailed,
     EmailAlreadyTaken,
     DatabaseError,
-    InvalidCredentials
+    InvalidCredentials,
+    InternalServerError,
 }
