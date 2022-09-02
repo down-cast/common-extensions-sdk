@@ -1,102 +1,23 @@
-name: publish to nuget
+name: Publish Nugets
+
+# Controls when the workflow will run
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: [ "Build and run tests" ]
+    types: [ completed ]
+    branches: [ '**' ]
 jobs:
-  publish:
-    name: build, pack & publish
+  publish_nuget:
     runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job 
     steps:
-      - uses: actions/checkout@v2
-      - name: Publish Downcast.Common.Logging
-        id: publish_logging_nuget
-        uses: Rebel028/publish-nuget@v2.7.0
-        with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: src/Downcast.Common.Logging/Downcast.Common.Logging.csproj
-          
-          # Configuration to build and package
-          BUILD_CONFIGURATION: Release
-          
-          # Platform target to compile (default is empty/AnyCPU)
-          # BUILD_PLATFORM: x64          
-          
-          # NuGet package id, used for version detection & defaults to project name
-          PACKAGE_NAME: Downcast.Common.Logging
-          
-          # Filepath with version info, relative to root of repository & defaults to PROJECT_FILE_PATH
-          # VERSION_FILE_PATH: src/Downcast.Common.Logging/Directory.Build.props
-
-          # Regex pattern to extract version info in a capturing group
-          # VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-          
-          # Useful with external providers like Nerdbank.GitVersioning, ignores VERSION_FILE_PATH & VERSION_REGEX
-          # VERSION_STATIC: 1.0.0
-
-          # Flag to toggle git tagging, enabled by default
-          TAG_COMMIT: true
-
-          # Format of the git tag, [*] gets replaced with actual version
-          TAG_FORMAT: v*-Downcast.Common.Logging
-          
-          # Required for packages pushed to Github Package Registry. User allowed to push to repository, defaults to GITHUB_ACTOR (user that triggered the action)
-          # GITHUB_USER: # optional
-          
-          # API key to authenticate with NuGet server
-          NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
-
-          # NuGet server uri hosting the packages, defaults to https://api.nuget.org
-          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
-
-          # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-          INCLUDE_SYMBOLS: true
-          
-      - name: Publish Downcast.Common.HttpClient.Extensions
-        id: publish_http_client_nuget
-        uses: Rebel028/publish-nuget@v2.7.0
-        with:
-          PROJECT_FILE_PATH: src/Downcast.Common.HttpClient.Extensions/Downcast.Common.HttpClient.Extensions.csproj
-          PACKAGE_NAME: Downcast.Common.HttpClient.Extensions
-          NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
-          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
-          TAG_COMMIT: true
-          TAG_FORMAT: v*-Downcast.Common.HttpClient.Extensions
-          INCLUDE_SYMBOLS: true
-
-      - name: Publish Downcast.Common.Errors
-        id: publish_http_errors_nuget
-        uses: Rebel028/publish-nuget@v2.7.0
-        with:
-          PROJECT_FILE_PATH: src/Downcast.Common.Errors/Downcast.Common.Errors.csproj
-          PACKAGE_NAME: Downcast.Common.Errors
-          NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
-          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
-          TAG_COMMIT: true
-          TAG_FORMAT: v*-Downcast.Common.Errors
-          INCLUDE_SYMBOLS: true      
-      
-      - name: Publish Downcast.Common.Errors.Handler
-        id: publish_http_errors_handler_nuget
-        uses: Rebel028/publish-nuget@v2.7.0
-        with:
-          PROJECT_FILE_PATH: src/Downcast.Common.Errors.Handler/Downcast.Common.Errors.Handler.csproj
-          PACKAGE_NAME: Downcast.Common.Errors.Handler
-          NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
-          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
-          TAG_COMMIT: true
-          TAG_FORMAT: v*-Downcast.Common.Errors.Handler
-          INCLUDE_SYMBOLS: true      
-          
-      - name: Publish Downcast.Common.Data.Validators
-        id: publish_data_validators_nuget
-        uses: Rebel028/publish-nuget@v2.7.0
-        with:
-          PROJECT_FILE_PATH: src/Downcast.Common.Data.Validators/Downcast.Common.Data.Validators.csproj
-          PACKAGE_NAME: Downcast.Common.Data.Validators
-          NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
-          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
-          TAG_COMMIT: true
-          TAG_FORMAT: v*-Downcast.Common.Data.Validators
-          INCLUDE_SYMBOLS: true
-            
+      - uses: actions/checkout@v3
+      - name: Add Org Nuget Source
+        run: dotnet nuget add source --username mihail-brinza --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/down-cast/index.json"
+      - run: dotnet pack -c Release -o . src/Downcast.Common.Data.Validators/Downcast.Common.Data.Validators.csproj
+      - run: dotnet pack -c Release -o . src/Downcast.Common.Errors/Downcast.Common.Errors.csproj
+      - run: dotnet pack -c Release -o . src/Downcast.Common.Errors.Handler/Downcast.Common.Errors.Handler.csproj
+      - run: dotnet pack -c Release -o . src/Downcast.Common.HttpClient.Extensions/Downcast.Common.HttpClient.Extensions.csproj
+      - run: dotnet pack -c Release -o . src/Downcast.Common.Logging/Downcast.Common.Logging.csproj
+      - name: Publish Nugets
+        run: dotnet nuget push *.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s "github" --skip-duplicate

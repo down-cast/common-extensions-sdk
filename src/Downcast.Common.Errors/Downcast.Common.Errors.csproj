@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <RepositoryUrl>https://github.com/down-cast/common-extensions-sdk</RepositoryUrl>
         <IsPackable>true</IsPackable>
+        <PackageId>Downcast.Common.Errors</PackageId>
         <Version>0.0.16</Version>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <RepositoryUrl>https://github.com/down-cast/common-extensions-sdk</RepositoryUrl>

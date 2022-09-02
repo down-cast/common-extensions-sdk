@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <Version>0.0.16</Version>
         <IsPackable>true</IsPackable>
+        <PackageId>Downcast.Common.Data.Validators</PackageId>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <RepositoryUrl>https://github.com/down-cast/common-extensions-sdk</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
