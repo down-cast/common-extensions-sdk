@@ -10,6 +10,10 @@ namespace Downcast.Common.Logging;
 
 public static class LogExtensions
 {
+    /// <summary>
+    /// Adds a new file to the Configuration object and configures the Serilog logger.
+    /// </summary>
+    /// <param name="builder"></param>
     public static void AddSerilog(this WebApplicationBuilder builder)
     {
         builder.Configuration.AddJsonFile("serilog-settings.json", false, false);

@@ -6,7 +6,13 @@
         <Nullable>enable</Nullable>
         <RepositoryUrl>https://github.com/down-cast/common-extensions-sdk</RepositoryUrl>
         <IsPackable>true</IsPackable>
-        <Version>0.0.15</Version>
+        <Version>0.0.16</Version>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <RepositoryUrl>https://github.com/down-cast/common-extensions-sdk</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>user</PackageTags>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
     
 </Project>

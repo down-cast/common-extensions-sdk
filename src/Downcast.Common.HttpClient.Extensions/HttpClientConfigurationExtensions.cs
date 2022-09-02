@@ -15,6 +15,15 @@ namespace Downcast.Common.HttpClient.Extensions;
 
 public static class HttpClientConfigurationExtensions
 {
+    /// <summary>
+    /// Configures HttpClient with Polly policies.
+    /// By default it tries to add a timeout policy, a circuit breaker policy and a retry policy.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="configuration"></param>
+    /// <param name="configurationSectionName">Configuration section name from where
+    /// the method will create <see cref="HttpClientOptions"/></param> option class.
+    /// <returns></returns>
     public static IHttpClientBuilder ConfigureDowncastHttpClient(
         this IHttpClientBuilder builder,
         IConfiguration configuration,
@@ -28,6 +37,13 @@ public static class HttpClientConfigurationExtensions
             .AddRetryPolicy(options.RetryPolicyOptions);
     }
 
+    /// <summary>
+    /// Returns a validated <see cref="HttpClientOptions"/> options class.
+    /// </summary>
+    /// <param name="configuration"></param>
+    /// <param name="configurationSectionName"></param>
+    /// <returns>A validated instance of <see cref="HttpClientOptions"/></returns>
+    /// <exception cref="ValidationException">If the configuration section does not correctly configure <see cref="HttpClientOptions"/></exception>
     public static HttpClientOptions GetHttpClientOptions(
         this IConfiguration configuration,
         string configurationSectionName)
@@ -42,7 +58,7 @@ public static class HttpClientConfigurationExtensions
 
         IEnumerable<string> memberDetails = validations.Select(result =>
         {
-            var members = string.Join(",", result.MemberNames);
+            var members = string.Join(", ", result.MemberNames);
             return $"Members: [${members}] Error Message: {result.ErrorMessage}";
         });
 
@@ -51,6 +67,12 @@ public static class HttpClientConfigurationExtensions
             $"{string.Join("\n", memberDetails)}");
     }
 
+    /// <summary>
+    /// Adds a circuit breaker policy to the HttpClient. If the circuit breaker policy is is null, it will not do anything
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="options"></param>
+    /// <returns></returns>
     public static IHttpClientBuilder AddCircuitBreakerPolicy(
         this IHttpClientBuilder builder,
         CircuitBreakerPolicyOptions? options)
@@ -68,6 +90,12 @@ public static class HttpClientConfigurationExtensions
         return builder.AddPolicyHandler(policy);
     }
 
+    /// <summary>
+    /// Adds a timeout policy to the HttpClient. If the timeout policy is is null, it will not do anything
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="options"></param>
+    /// <returns></returns>
     public static IHttpClientBuilder AddTimeoutPolicy(this IHttpClientBuilder builder, TimeoutPolicyOptions? options)
     {
         if (options is not { Enabled: true })
@@ -83,6 +111,13 @@ public static class HttpClientConfigurationExtensions
         return builder.AddPolicyHandler(policy);
     }
 
+
+    /// <summary>
+    /// Adds a retry policy to the HttpClient. If the retry policy is is null, it will not do anything
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="options"></param>
+    /// <returns></returns>
     public static IHttpClientBuilder AddRetryPolicy(this IHttpClientBuilder builder, RetryPolicyOptions? options)
     {
         if (options is not { Enabled: true })

@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downcast.Common.Errors", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downcast.Common.Errors.Handler", "src\Downcast.Common.Errors.Handler\Downcast.Common.Errors.Handler.csproj", "{CD91948F-D0C0-4685-9758-8C04363B2024}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Downcast.Common.Data.Validators", "src\Downcast.Common.Data.Validators\Downcast.Common.Data.Validators.csproj", "{36CD4FFF-141F-4D7A-A0F1-272DA5D4CE18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,11 +44,16 @@ Global
 		{CD91948F-D0C0-4685-9758-8C04363B2024}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD91948F-D0C0-4685-9758-8C04363B2024}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD91948F-D0C0-4685-9758-8C04363B2024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36CD4FFF-141F-4D7A-A0F1-272DA5D4CE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36CD4FFF-141F-4D7A-A0F1-272DA5D4CE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36CD4FFF-141F-4D7A-A0F1-272DA5D4CE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36CD4FFF-141F-4D7A-A0F1-272DA5D4CE18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D79351D1-2100-49A4-8A3B-E049040BD62E} = {7E1679AC-AF1F-4442-94AC-BBDC9F14CD07}
 		{8427F886-5CD9-4417-99EE-FA78805A2567} = {7E1679AC-AF1F-4442-94AC-BBDC9F14CD07}
 		{9294CBDF-3859-499C-B5E9-5678D8C5777F} = {7E1679AC-AF1F-4442-94AC-BBDC9F14CD07}
 		{CD91948F-D0C0-4685-9758-8C04363B2024} = {7E1679AC-AF1F-4442-94AC-BBDC9F14CD07}
+		{36CD4FFF-141F-4D7A-A0F1-272DA5D4CE18} = {7E1679AC-AF1F-4442-94AC-BBDC9F14CD07}
 	EndGlobalSection
 EndGlobal

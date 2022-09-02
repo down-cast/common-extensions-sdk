@@ -50,7 +50,7 @@ jobs:
           NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
 
           # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-          # INCLUDE_SYMBOLS: false
+          INCLUDE_SYMBOLS: true
           
       - name: Publish Downcast.Common.HttpClient.Extensions
         id: publish_http_client_nuget
@@ -62,6 +62,7 @@ jobs:
           NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
           TAG_COMMIT: true
           TAG_FORMAT: v*-Downcast.Common.HttpClient.Extensions
+          INCLUDE_SYMBOLS: true
 
       - name: Publish Downcast.Common.Errors
         id: publish_http_errors_nuget
@@ -73,7 +74,8 @@ jobs:
           NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
           TAG_COMMIT: true
           TAG_FORMAT: v*-Downcast.Common.Errors
-          
+          INCLUDE_SYMBOLS: true      
+      
       - name: Publish Downcast.Common.Errors.Handler
         id: publish_http_errors_handler_nuget
         uses: Rebel028/publish-nuget@v2.7.0
@@ -84,4 +86,17 @@ jobs:
           NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
           TAG_COMMIT: true
           TAG_FORMAT: v*-Downcast.Common.Errors.Handler
+          INCLUDE_SYMBOLS: true      
+          
+      - name: Publish Downcast.Common.Data.Validators
+        id: publish_http_errors_handler_nuget
+        uses: Rebel028/publish-nuget@v2.7.0
+        with:
+          PROJECT_FILE_PATH: src/Downcast.Common.Data.Validators/Downcast.Common.Data.Validators.csproj
+          PACKAGE_NAME: Downcast.Common.Data.Validators
+          NUGET_KEY: ${{secrets.GITHUB_TOKEN}}
+          NUGET_SOURCE: https://nuget.pkg.github.com/down-cast
+          TAG_COMMIT: true
+          TAG_FORMAT: v*-Downcast.Common.Data.Validators
+          INCLUDE_SYMBOLS: true
             
