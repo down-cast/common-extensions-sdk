@@ -1,0 +1,24 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+
+registries:
+  downcast-nuget:
+    type: nuget-feed
+    url: https://nuget.pkg.github.com/down-cast/index.json
+    username: mihail-brinza
+    password: ${{secrets.DOWNCAST_NUGET_TOKEN}}
+
+
+updates:
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    registries:
+      - downcast-nuget
+    schedule:
+      interval: "daily"
+    assignees:
+      - "mihail-brinza"   
