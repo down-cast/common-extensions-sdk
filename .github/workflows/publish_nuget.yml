@@ -89,7 +89,7 @@ jobs:
           INCLUDE_SYMBOLS: true      
           
       - name: Publish Downcast.Common.Data.Validators
-        id: publish_http_errors_handler_nuget
+        id: publish_data_validators_nuget
         uses: Rebel028/publish-nuget@v2.7.0
         with:
           PROJECT_FILE_PATH: src/Downcast.Common.Data.Validators/Downcast.Common.Data.Validators.csproj
