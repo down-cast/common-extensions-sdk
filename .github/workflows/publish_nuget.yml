@@ -2,10 +2,9 @@ name: Publish Nugets
 
 # Controls when the workflow will run
 on:
-  workflow_run:
-    workflows: [ "Build and run tests" ]
-    types: [ completed ]
-    branches: [ '**' ]
+  push:
+    branches:
+      - main
 jobs:
   publish_nuget:
     runs-on: ubuntu-latest
